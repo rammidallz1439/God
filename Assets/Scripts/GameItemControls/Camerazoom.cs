@@ -46,7 +46,7 @@ public class Camerazoom : MonoBehaviour
 
 		}
 
-		mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, 2f, 10f);
+		mainCamera.fieldOfView = Mathf.Clamp(mainCamera.fieldOfView, 24f, 90f);
 		
 
 	}
