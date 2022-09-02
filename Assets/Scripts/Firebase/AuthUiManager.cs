@@ -20,6 +20,10 @@ public class AuthUiManager : MonoBehaviour
     public TMP_Text warningLoginText;
     public TMP_Text confirmLoginText;
 
+    [Header("Saving")]
+    public string EmailAddress;
+    public string PasswordSaving;
+
     //Register variables
     [Header("Register")]
     public TMP_InputField usernameRegisterField;
@@ -46,6 +50,17 @@ public class AuthUiManager : MonoBehaviour
         });
     }
 
+    private void Start()
+    {
+        EmailAddress = emailLoginField.text.ToString();
+        PasswordSaving = passwordLoginField.text.ToString();
+
+        PlayerPrefs.SetString("SaveEmail", EmailAddress);
+        PlayerPrefs.SetString("SavePassword", PasswordSaving);
+
+        emailLoginField.text = PlayerPrefs.GetString("SaveEmail");
+        passwordLoginField.text = PlayerPrefs.GetString("SavePassword");
+    }
     private void InitializeFirebase()
     {
         Debug.Log("Setting up Firebase Auth");
@@ -58,6 +73,8 @@ public class AuthUiManager : MonoBehaviour
     {
         //Call the login coroutine passing the email and password
         StartCoroutine(Login(emailLoginField.text, passwordLoginField.text));
+        PlayerPrefs.SetString("SaveEmail", EmailAddress);
+        PlayerPrefs.SetString("SavePassword", PasswordSaving);
     }
     //Function for the register button
     public void RegisterButton()
@@ -65,34 +82,8 @@ public class AuthUiManager : MonoBehaviour
         //Call the register coroutine passing the email, password, and username
         StartCoroutine(Register(emailRegisterField.text, passwordRegisterField.text, usernameRegisterField.text));
     }
-    public void ResetPassword()
-    {
-        StartCoroutine(ResetUserPassword());
-    }
-
-    private IEnumerator ResetUserPassword()
-    {
-        yield return new WaitForSeconds(0.5f);
-        string emailAddress = "user@example.com";
-        if (User != null)
-        {
-            auth.SendPasswordResetEmailAsync(emailAddress).ContinueWith(task => {
-                if (task.IsCanceled)
-                {
-                    Debug.LogError("SendPasswordResetEmailAsync was canceled.");
-                    return;
-                }
-                if (task.IsFaulted)
-                {
-                    Debug.LogError("SendPasswordResetEmailAsync encountered an error: " + task.Exception);
-                    return;
-                }
-
-                Debug.Log("Password reset email sent successfully.");
-            });
-        }
-
-    }
+  
+ 
     private IEnumerator Login(string _email, string _password)
     {
         //Call the Firebase auth signin function passing the email and password
