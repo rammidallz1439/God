@@ -65,7 +65,34 @@ public class AuthUiManager : MonoBehaviour
         //Call the register coroutine passing the email, password, and username
         StartCoroutine(Register(emailRegisterField.text, passwordRegisterField.text, usernameRegisterField.text));
     }
+    public void ResetPassword()
+    {
+        StartCoroutine(ResetUserPassword());
+    }
 
+    private IEnumerator ResetUserPassword()
+    {
+        yield return new WaitForSeconds(0.5f);
+        string emailAddress = "user@example.com";
+        if (User != null)
+        {
+            auth.SendPasswordResetEmailAsync(emailAddress).ContinueWith(task => {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("SendPasswordResetEmailAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("SendPasswordResetEmailAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                Debug.Log("Password reset email sent successfully.");
+            });
+        }
+
+    }
     private IEnumerator Login(string _email, string _password)
     {
         //Call the Firebase auth signin function passing the email and password
