@@ -52,12 +52,6 @@ public class AuthUiManager : MonoBehaviour
 
     private void Start()
     {
-        EmailAddress = emailLoginField.text.ToString();
-        PasswordSaving = passwordLoginField.text.ToString();
-
-        PlayerPrefs.SetString("SaveEmail", EmailAddress);
-        PlayerPrefs.SetString("SavePassword", PasswordSaving);
-
         emailLoginField.text = PlayerPrefs.GetString("SaveEmail");
         passwordLoginField.text = PlayerPrefs.GetString("SavePassword");
     }
@@ -66,6 +60,7 @@ public class AuthUiManager : MonoBehaviour
         Debug.Log("Setting up Firebase Auth");
         //Set the authentication instance object
         auth = FirebaseAuth.DefaultInstance;
+
     }
 
     //Function for the login button
@@ -73,6 +68,10 @@ public class AuthUiManager : MonoBehaviour
     {
         //Call the login coroutine passing the email and password
         StartCoroutine(Login(emailLoginField.text, passwordLoginField.text));
+
+        EmailAddress = emailLoginField.text;
+        PasswordSaving = passwordLoginField.text;
+
         PlayerPrefs.SetString("SaveEmail", EmailAddress);
         PlayerPrefs.SetString("SavePassword", PasswordSaving);
     }
