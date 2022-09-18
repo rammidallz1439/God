@@ -59,8 +59,9 @@
     <Compile Include="Assets\Scripts\Firebase\GameManager.cs" />
     <Compile Include="Assets\Scripts\Firebase\AuthUiManager.cs" />
     <Compile Include="Assets\Scripts\GameItemControls\Camerazoom.cs" />
-    <Compile Include="Assets\Scripts\GameItemControls\Planet_Controller.cs" />
     <Compile Include="Assets\Scripts\Firebase\UIManager.cs" />
+    <Compile Include="Assets\Scripts\GameItemControls\Planet_Controller.cs" />
+    <Compile Include="Assets\Scripts\Items\Interfaces\PrefabInstantiater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

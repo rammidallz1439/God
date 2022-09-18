@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Firebase;
 using Firebase.Auth;
+using UnityEngine.SceneManagement;
 
 public class AuthUiManager : MonoBehaviour
 {
@@ -126,6 +127,7 @@ public class AuthUiManager : MonoBehaviour
             Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
+            SceneManager.LoadScene("Game");
         }
     }
 
