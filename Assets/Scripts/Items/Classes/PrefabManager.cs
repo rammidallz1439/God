@@ -1,49 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class PrefabManager : MonoBehaviour, IPrefabInstantiater
 {
     public static PrefabManager ins;
-    public List<GameObject> ObjectsList;
-    
-    public GameObject objectToPool;
 
-    GameObject temp;
-
-    [SerializeField]
-    int amountToPool;
-
+    public GameObject meteor;
+    public Button _meteorButton;
     public bool canPool;
 
     #region
+
+    void Awake()
+    {
+        meteor = GetComponent<GameObject>();
+    }
     void Start()
     {
-        ObjectsList = new List<GameObject>(); //asteroids list
-        canPool = false;
-        ins = this;
+        _meteorButton.onClick.AddListener(InstantiatePrefabs);
+         
     }
 
-
-    //function of pooling objects when button is clicked
-    public void InstantiatePrefabs()
+    public void InstantiatePrefabs() //Interface function Instantiates prefabs
     {
-
         canPool = true;
-        if (canPool)
-        {
-            for (int i = 0; i < amountToPool; i++)
-            {
-                temp = Instantiate(objectToPool);
-                temp.SetActive(true);
-                ObjectsList.Add(temp);
+        Instantiate(meteor, new Vector3(Random.Range(100, 300), Random.Range(100, 300), Random.Range(100, 300)), Quaternion.identity);
 
-            }
-        }
+
     }
 
-  
+
 
     #endregion
 }

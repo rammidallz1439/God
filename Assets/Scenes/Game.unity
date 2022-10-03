@@ -255,10 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574a63af8662526428c54147483c412c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroid: {fileID: 6160760540938598384, guid: 38eb491e43a25d943933f0ac192e606c, type: 3}
-  asteroidsList: []
-  objectToPool: {fileID: 0}
-  amountToPool: 4
+  meteor: {fileID: 6160760540938598384, guid: 38eb491e43a25d943933f0ac192e606c, type: 3}
+  _meteorButton: {fileID: 1742372881}
+  canPool: 0
 --- !u!4 &559911751
 Transform:
   m_ObjectHideFlags: 0
@@ -860,7 +859,7 @@ GameObject:
   - component: {fileID: 1613487346}
   m_Layer: 6
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

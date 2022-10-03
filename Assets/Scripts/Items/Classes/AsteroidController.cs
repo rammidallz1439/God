@@ -12,9 +12,9 @@ public class AsteroidController : MonoBehaviour
     void Start()
     {
         planet = GameObject.FindGameObjectWithTag("Planet");
-        
-      transform.position=  new Vector3(Random.Range(-300,300), Random.Range(-300, 300), Random.Range(-300, 300));
-        transform.localScale = new Vector3(Random.Range(250, 1000),Random.Range(250, 1000), Random.Range(250, 1000));
+
+        transform.position = new Vector3(Random.Range(-300, 300), Random.Range(-300, 300), Random.Range(-300, 300));
+        transform.localScale = new Vector3(Random.Range(250, 1000), Random.Range(250, 1000), Random.Range(250, 1000));
     }
 
     private void Update()
@@ -25,26 +25,17 @@ public class AsteroidController : MonoBehaviour
 
         }
 
-        if (!PrefabManager.ins.canPool)
-        {
-            StopCoroutine(DelayActive());
-        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Planet"))
         {
-            StartCoroutine(DelayActive());
-           
+            Destroy(this.gameObject);
+
         }
     }
 
-    IEnumerator DelayActive()
-    {
-        yield return new WaitForSeconds(3f);
-        gameObject.SetActive(false);
-      
-        PrefabManager.ins.canPool = false;
-    }
+
 }
