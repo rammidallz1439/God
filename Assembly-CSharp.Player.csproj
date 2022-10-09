@@ -64,6 +64,9 @@
     <Compile Include="Assets\Scripts\Items\Classes\AsteroidController.cs" />
     <Compile Include="Assets\Scripts\Firebase\UIManager.cs" />
     <Compile Include="Assets\Scripts\GameItemControls\Planet_Controller.cs" />
+    <Compile Include="Assets\Scripts\GameItemControls\BlastController.cs" />
+    <Compile Include="Assets\Scripts\PlanetManager\PlanetSpawnManager.cs" />
+    <Compile Include="Assets\Scripts\GameItemControls\SpawnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -330,6 +333,9 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.Auth">
       <HintPath>Assets\Firebase\Plugins\Firebase.Auth.dll</HintPath>

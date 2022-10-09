@@ -5,11 +5,13 @@ using UnityEngine;
 public class AsteroidController : MonoBehaviour
 {
     private GameObject planet;
+    public ParticleSystem meteorBlast;
     float maxSpped = 50f;
 
     void Start()
     {
         planet = GameObject.FindGameObjectWithTag("Planet");
+        transform.localScale = new Vector3(Random.Range(100,300), Random.Range(100, 300), Random.Range(100, 300));
 
     }
 
@@ -25,7 +27,8 @@ public class AsteroidController : MonoBehaviour
         if (other.gameObject.CompareTag("Planet"))
         {
             Destroy(this.gameObject);
-
+            Instantiate(meteorBlast, transform.position, Quaternion.identity);
+            
         }
     }
 

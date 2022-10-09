@@ -64,6 +64,9 @@
     <Compile Include="Assets\Scripts\Items\Classes\AsteroidController.cs" />
     <Compile Include="Assets\Scripts\Firebase\UIManager.cs" />
     <Compile Include="Assets\Scripts\GameItemControls\Planet_Controller.cs" />
+    <Compile Include="Assets\Scripts\GameItemControls\BlastController.cs" />
+    <Compile Include="Assets\Scripts\PlanetManager\PlanetSpawnManager.cs" />
+    <Compile Include="Assets\Scripts\GameItemControls\SpawnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -780,6 +783,10 @@
     <ProjectReference Include="Unity.Mathematics.csproj">
       <Project>{E39DE981-30C1-22E0-7AA6-669420F8594C}</Project>
       <Name>Unity.Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Tilemap.Editor.csproj">
+      <Project>{7B760AE2-4B4A-31B0-DAE4-5E3B444C9F74}</Project>
+      <Name>Unity.2D.Tilemap.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

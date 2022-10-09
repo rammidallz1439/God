@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IPrefabInstantiater
 {
-     void InstantiatePrefabs();
+     void InstantiateMeteor();
+    void InstantiateLifeMeteor();
 }

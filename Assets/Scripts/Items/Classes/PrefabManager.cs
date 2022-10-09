@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,29 +8,38 @@ public class PrefabManager : MonoBehaviour, IPrefabInstantiater
 {
     public static PrefabManager ins;
 
-    [Header("Meteor")]
-    public GameObject meteor;
-    public Transform SpawnPosMeteor;
 
-
-
+   public GameObject[] meteorArray;
+   public GameObject[] lifeMeteorArray;
 
     public Button _meteorButton;
-    public bool canPool;
+    public Button _lifeMeteorButton;
 
     #region
 
     void Start()
     {
         
-        _meteorButton.onClick.AddListener(InstantiatePrefabs);
-         
+        _meteorButton.onClick.AddListener(InstantiateMeteor);
+       _lifeMeteorButton.onClick.AddListener(InstantiateLifeMeteor);   
+
     }
 
-    public void InstantiatePrefabs() //Interface function Instantiates prefabs
+ 
+    public void InstantiateLifeMeteor()
     {
-        Instantiate(meteor, SpawnPosMeteor.position, Quaternion.identity);
+        foreach (GameObject met in lifeMeteorArray)
+        {
+            Instantiate(met, new Vector3(Random.Range(-300, 300), Random.Range(-300, 300), Random.Range(-300, 300)), Quaternion.identity);
+        }
+    }
 
+    public void InstantiateMeteor()
+    {
+        foreach (GameObject met in meteorArray)
+        {
+            Instantiate(met, new Vector3(Random.Range(-300, 300), Random.Range(-300, 300), Random.Range(-300, 300)), Quaternion.identity);
+        }
 
     }
 
@@ -37,6 +47,8 @@ public class PrefabManager : MonoBehaviour, IPrefabInstantiater
 
     #endregion
 }
+
+
 
 
 
