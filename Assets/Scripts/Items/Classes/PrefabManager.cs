@@ -7,26 +7,28 @@ public class PrefabManager : MonoBehaviour, IPrefabInstantiater
 {
     public static PrefabManager ins;
 
+    [Header("Meteor")]
     public GameObject meteor;
+    public Transform SpawnPosMeteor;
+
+
+
+
     public Button _meteorButton;
     public bool canPool;
 
     #region
 
-    void Awake()
-    {
-        meteor = GetComponent<GameObject>();
-    }
     void Start()
     {
+        
         _meteorButton.onClick.AddListener(InstantiatePrefabs);
          
     }
 
     public void InstantiatePrefabs() //Interface function Instantiates prefabs
     {
-        canPool = true;
-        Instantiate(meteor, new Vector3(Random.Range(100, 300), Random.Range(100, 300), Random.Range(100, 300)), Quaternion.identity);
+        Instantiate(meteor, SpawnPosMeteor.position, Quaternion.identity);
 
 
     }
