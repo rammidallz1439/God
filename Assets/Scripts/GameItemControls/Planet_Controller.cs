@@ -14,20 +14,23 @@ public class Planet_Controller : MonoBehaviour
     private float m_previousX;
     private float m_previousY;
     private Camera m_camera;
-    private bool m_rotating = false;
-
+    public bool m_rotating = false;
+    public bool rotating;
     private void Awake()
     {
+        rotating = true;
         m_camera = Camera.main;
     }
 
     private void Update()
     {
+       
         if (!touchAnywhere)
         {
             //No need to check if already rotating
             if (!m_rotating)
             {
+                
                 RaycastHit hit;
                 Ray ray = m_camera.ScreenPointToRay(Input.mousePosition);
                 if (!Physics.Raycast(ray, out hit, 1000, targetLayer))
@@ -39,6 +42,7 @@ public class Planet_Controller : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+           
             m_rotating = true;
             m_previousX = Input.mousePosition.x;
             m_previousY = Input.mousePosition.y;
@@ -46,6 +50,7 @@ public class Planet_Controller : MonoBehaviour
         // get the user touch input
         if (Input.GetMouseButton(0))
         {
+            
             var touch = Input.mousePosition;
             var deltaX = -(Input.mousePosition.y - m_previousY) * rotationRate;
             var deltaY = -(Input.mousePosition.x - m_previousX) * rotationRate;
@@ -57,9 +62,11 @@ public class Planet_Controller : MonoBehaviour
 
             m_previousX = Input.mousePosition.x;
             m_previousY = Input.mousePosition.y;
+            
         }
         if (Input.GetMouseButtonUp(0))
             m_rotating = false;
+            
     }
 }
 

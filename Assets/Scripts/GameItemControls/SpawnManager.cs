@@ -7,24 +7,24 @@ public abstract class SpawnManager : MonoBehaviour
 
 
 
-public void Spawner(GameObject obj)
+  /*  public void Spawner()
     {
         RaycastHit hit;
-        if (Input.touchCount>0)
+        if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            Ray touchPos=Camera.main.ScreenPointToRay(touch.position);
+            Ray touchPos = Camera.main.ScreenPointToRay(touch.position);
 
             if (touch.phase == TouchPhase.Began)
             {
-                if (Physics.Raycast(touchPos,out hit))
+                if (Physics.Raycast(touchPos, out hit))
                 {
                     if (hit.transform.CompareTag("Planet"))
                     {
-                        Instantiate(obj,touch.position,Quaternion.identity);   
+                        Instantiate(obj, touch.position, Quaternion.identity);
                     }
                 }
             }
         }
-    }
+    }*/
 }
