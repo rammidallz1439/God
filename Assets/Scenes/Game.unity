@@ -1308,7 +1308,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _mats: []
+  _mats:
+  - {fileID: 2100000, guid: 55c834a3efb5a4e45b92e91c66b24ee7, type: 2}
+  - {fileID: 2100000, guid: 5318d237b49e88347804964343e1142e, type: 2}
 --- !u!1 &1742372879
 GameObject:
   m_ObjectHideFlags: 0
